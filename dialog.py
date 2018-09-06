@@ -1,4 +1,4 @@
-# http://www.effbot.org/tkinterbook/tkinter-dialog-windows.htm
+# dialog class from http://www.effbot.org/tkinterbook/tkinter-dialog-windows.htm
 
 from tkinter import *
 import os
