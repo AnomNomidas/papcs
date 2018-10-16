@@ -25,6 +25,8 @@ class PrettyAccuratePlayingCardsSimulator:
 
     def show_context_menu(self, event):
         try:
+            self.main_canvas.context_menu_x = event.x_root
+            self.main_canvas.context_menu_y = event.y_root
             self.context_menu.tk_popup(event.x_root, event.y_root)
         finally:
             self.context_menu.grab_release()

@@ -35,5 +35,4 @@ class CardContainer(DragDropWidget, tk.Label):
     
     def lift_card(self, event):
         self.lift()
-        self.bind("<Button-2>", self.lift_card())
         

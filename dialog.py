@@ -128,5 +128,6 @@ class DialogCreateCard(Dialog):
         card_image = CardContainer(self.nametowidget(self.winfo_parent()), image=photo, borderwidth=1, highlightthickness=0)
         card_image.image = photo
         card_image.card = card
-        self.nametowidget(self.winfo_parent()).create_window(500, 500, window=card_image)
-        
+
+        # self.nametowidget(self.winfo_parent()) is self.main_canvas
+        self.nametowidget(self.winfo_parent()).create_window(self.nametowidget(self.winfo_parent()).context_menu_x, self.nametowidget(self.winfo_parent()).context_menu_y, window=card_image)        
