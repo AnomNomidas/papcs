@@ -14,16 +14,13 @@ class PrettyAccuratePlayingCardsSimulator:
         master.title("Pretty Accurate Playing Cards Simulator")
 
         self.main_canvas = Canvas(self.master, bg="green")
-        self.main_canvas.bind("<Button-3>", self.show_context_menu)
+        self.main_canvas.bind("<Button-3>", self.main_context_menu)
         self.main_canvas.pack(fill="both", expand=1)
 
         self.context_menu = Menu(self.main_canvas, tearoff=0)
         self.context_menu.add_command(label="Create a card...", command=lambda: self.create_card(self.main_canvas))
 
-        self.b = Button(self.main_canvas, text="Quit", command=root.destroy)
-        self.b.pack()
-
-    def show_context_menu(self, event):
+    def main_context_menu(self, event):
         try:
             self.main_canvas.context_menu_x = event.x_root
             self.main_canvas.context_menu_y = event.y_root

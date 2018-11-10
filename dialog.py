@@ -6,9 +6,7 @@ from card import Card
 from container import DragDropWidget, CardContainer
 
 class Dialog(Toplevel):
-
     def __init__(self, parent, title = None):
-
         Toplevel.__init__(self, parent)
         self.transient(parent)
 
@@ -16,7 +14,6 @@ class Dialog(Toplevel):
             self.title(title)
 
         self.parent = parent
-
         self.result = None
 
         body = Frame(self)
@@ -24,19 +21,16 @@ class Dialog(Toplevel):
         body.pack(padx=5, pady=5)
 
         self.buttonbox()
-
         self.grab_set()
 
         if not self.initial_focus:
             self.initial_focus = self
 
         self.protocol("WM_DELETE_WINDOW", self.cancel)
-
         self.geometry("+%d+%d" % (parent.winfo_rootx()+50,
                                   parent.winfo_rooty()+50))
 
         self.initial_focus.focus_set()
-
         self.wait_window(self)
 
     #
@@ -68,7 +62,6 @@ class Dialog(Toplevel):
     # standard button semantics
 
     def ok(self, event=None):
-
         if not self.validate():
             self.initial_focus.focus_set() # put focus back
             return
@@ -81,7 +74,6 @@ class Dialog(Toplevel):
         self.cancel()
 
     def cancel(self, event=None):
-
         # put focus back to the parent window
         self.parent.focus_set()
         self.destroy()
@@ -90,11 +82,9 @@ class Dialog(Toplevel):
     # command hooks
 
     def validate(self):
-
         return 1 # override
 
     def apply(self):
-
         pass # override
 
 class DialogCreateCard(Dialog):
@@ -104,12 +94,12 @@ class DialogCreateCard(Dialog):
         self.tkvar_facing = StringVar()
 
         self.options_suit = {"Diamonds": Card.Suit.Diamonds, "Clubs": Card.Suit.Clubs, "Hearts": Card.Suit.Hearts, "Spades": Card.Suit.Spades}
-        self.tkvar_suit.set("Spades")
+        self.tkvar_suit.set("Spades") # default suit
 
         self.options_value = {"Ace": 1, "King": 13, "Queen": 12, "Jack": 11}
         for x in range(2, 11):
             self.options_value[str(x)] = x
-        self.tkvar_value.set("Ace")
+        self.tkvar_value.set("Ace") # default value
 
         self.options_facing = {"up": True, "down": False}
         self.tkvar_facing.set("up")
@@ -130,4 +120,6 @@ class DialogCreateCard(Dialog):
         card_image.card = card
 
         # self.nametowidget(self.winfo_parent()) is self.main_canvas
-        self.nametowidget(self.winfo_parent()).create_window(self.nametowidget(self.winfo_parent()).context_menu_x, self.nametowidget(self.winfo_parent()).context_menu_y, window=card_image)        
+        self.nametowidget(self.winfo_parent()).create_window(self.nametowidget(self.winfo_parent()).context_menu_x, self.nametowidget(self.winfo_parent()).context_menu_y, window=card_image)
+
+        self.destroy()        
