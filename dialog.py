@@ -33,13 +33,11 @@ class Dialog(Toplevel):
         self.initial_focus.focus_set()
         self.wait_window(self)
 
-    #
     # construction hooks
 
     def body(self, master):
         # create dialog body.  return widget that should have
         # initial focus.  this method should be overridden
-
         pass
 
     def buttonbox(self):
@@ -58,7 +56,6 @@ class Dialog(Toplevel):
 
         box.pack()
 
-    #
     # standard button semantics
 
     def ok(self, event=None):
@@ -78,7 +75,6 @@ class Dialog(Toplevel):
         self.parent.focus_set()
         self.destroy()
 
-    #
     # command hooks
 
     def validate(self):
