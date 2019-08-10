@@ -15,3 +15,6 @@ Planned features:
 - Improved UI 
 
 papcs is licensed under MIT License.
+
+## Screenshot
+![Screenshot](images/papcs_screenshot_1.png)
